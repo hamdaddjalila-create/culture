@@ -35,7 +35,7 @@
             <nav class="flex gap-2">
                 <button @click="currentTab = '360tour'" :class="currentTab === '360tour' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'" class="px-4 py-2 rounded-xl text-xs font-bold transition">🌐 جولة 360° التفاعلية</button>
                 <button @click="currentTab = 'performance'" :class="currentTab === 'performance' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-800'" class="px-4 py-2 rounded-xl text-xs font-bold transition">🥋 العروض الكوريغرافية</button>
-                <button @click="currentTab = 'dossier'" :class="currentTab === 'dossier' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-800'" class="px-4 py-2 rounded-xl text-xs font-bold transition">📜 ملف الفنان الرسمي</button>
+                <button @click="currentTab = 'dossier'" :class="currentTab === 'dossier' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-800'" class="px-4 py-2 rounded-xl text-xs font-bold transition">📜 ملف الفنان الرسمي</button>
             </nav>
         </div>
     </header>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
                     <h3 class="text-lg font-bold text-emerald-400 mb-2">🎭 البعد الفني الاستعراضي</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">يُمثل هذا المعلم خلفية مسرحية وهندسية مثالية للعروض الحركة التعبيرية والكاتا التقليدية الفلكلورية لربط الرياضة بالهوية التراثية.</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">يُمثل هذا المعلم خلفية مسرحية وهندسية مثالية للعروض الحركة التعبيرية والكاتا التقليدية لربط الرياضة بالهوية التراثية والسمعية البصرية.</p>
                 </div>
             </div>
         </div>
@@ -121,13 +121,13 @@
                         </div>
                         <div class="flex justify-between border-b border-slate-800 pb-2">
                             <span class="text-slate-400">نوع العمل المقدم:</span>
-                            <span class="font-bold text-white">تطبيق تفاعلي + عروض استعراضية تراثية</span>
+                            <span class="font-bold text-white">تطبيق تفاعلي 360° + عروض استعراضية تراثية</span>
                         </div>
                     </div>
 
                     <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-xs leading-relaxed text-slate-300">
                         <p class="font-bold text-emerald-400 mb-2">ملخص المشروع الفني:</p>
-                        يتضمن المشروع إنشاء منصات سمعية بصرية وتفاعلية (Digital Art & Interactive Tours) لتوثيق التراث الجزائري المعماري، يدمج بين التصميم التفاعلي للوسائط المتعددة والعروض الاستعراضية الحركة (Martial Arts Performance & Choreography).
+                        يتضمن المشروع إنشاء منصات سمعية بصرية وتفاعلية (Digital Art & Interactive Tours) لتوثيق التراث الجزائري المعماري، يدمج بين التصميم التفاعلي للوسائط المتعددة والعروض الاستعراضية الحركية (Martial Arts Performance & Choreography).
                     </div>
                 </div>
             </div>
@@ -136,11 +136,11 @@
     </main>
 
     <script>
-        // Initialize 360 Viewer with Pannellum
+        // Initialize 360 Viewer with Pannellum (صورة بانورامية حقيقية لمقام الشهيد)
         window.addEventListener('load', function() {
             pannellum.viewer('panorama', {
                 "type": "equirectangular",
-                "panorama": "https://pannellum.org/images/alma.jpg",
+                "panorama": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Maqam_Echahid_360_panorama.jpg",
                 "autoLoad": true,
                 "compass": true,
                 "title": "مقام الشهيد 360°"
