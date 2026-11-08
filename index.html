@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقام الشهيد 360° | المعرض الرقمي والتراثي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pannellum 360 Viewer CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; }
+        .font-arabic { font-family: 'Amiri', serif; }
+        #panorama { width: 100%; height: 500px; border-radius: 1rem; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen" x-data="{ currentTab: '360tour' }">
+
+    <!-- Navbar -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-xl font-bold shadow-lg shadow-emerald-900/50">🏛️</div>
+                <div>
+                    <h1 class="text-xl font-bold text-white">مقام الشهيد | المعالم الجزائرية 360°</h1>
+                    <p class="text-xs text-emerald-400">مشروع افتراضي استعراضي وتراثي لطلب بطاقة الفنان</p>
+                </div>
+            </div>
+            
+            <nav class="flex gap-2">
+                <button @click="currentTab = '360tour'" :class="currentTab === '360tour' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'" class="px-4 py-2 rounded-xl text-xs font-bold transition">🌐 جولة 360° التفاعلية</button>
+                <button @click="currentTab = 'performance'" :class="currentTab === 'performance' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-800'" class="px-4 py-2 rounded-xl text-xs font-bold transition">🥋 العروض الكوريغرافية</button>
+                <button @click="currentTab = 'dossier'" :class="currentTab === 'dossier' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-800'" class="px-4 py-2 rounded-xl text-xs font-bold transition">📜 ملف الفنان الرسمي</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- 1. 360 Virtual Tour Tab -->
+        <div x-show="currentTab === '360tour'" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-emerald-400">الجولة الافتراضية 360° حول مقام الشهيد</h2>
+                        <p class="text-xs text-slate-400 mt-1">استخدم الفأرة أو لمس الشاشة للتدوير والاستكشاف من جميع الزوايا</p>
+                    </div>
+                </div>
+
+                <!-- Panorama Container -->
+                <div id="panorama" class="shadow-2xl border border-slate-800 overflow-hidden"></div>
+            </div>
+
+            <!-- Landmark Information Card -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">📜 البطاقة التاريخية</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">تأسس مقام الشهيد سنة 1982 مخلداً لشهداء الثورة التحريرية الجزائرية المجيدة. يتكون المعلم من ثلاث أوراق نخيل باسطة تحتضن القبة والمقام الشرفي.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">📐 الهندسة والمعمار</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">يبلغ ارتفاعه 92 متراً، وتم تصميمه بنمط معماري فريد يمزج بين الحداثة والأشكال الخرسانية المسلحة على شكل أوراق النخيل التجريدية.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">🎭 البعد الفني الاستعراضي</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">يُمثل هذا المعلم خلفية مسرحية وهندسية مثالية للعروض الحركة التعبيرية والكاتا التقليدية الفلكلورية لربط الرياضة بالهوية التراثية.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Performance & Choreography Tab -->
+        <div x-show="currentTab === 'performance'" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                <h2 class="text-2xl font-bold text-emerald-400 mb-2">العروض الكوريغرافية والفنون التعبيرية (Judo Kata Performance)</h2>
+                <p class="text-xs text-slate-400 mb-6">دمج الفنون القتالية الاستعراضية مع المعالم المعمارية والتراثية الجزائرية</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="aspect-video bg-slate-900 rounded-lg flex items-center justify-center border border-slate-800">
+                            <span class="text-4xl">🥋🎥</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">عرض الكاتا التعبيري 01: أمام مقام الشهيد</h3>
+                        <p class="text-xs text-slate-400">لوحة استعراضية تعبيرية تبرز الدقة والجمال الحركي للجودو مع فخامة البناء المعماري للمقام.</p>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="aspect-video bg-slate-900 rounded-lg flex items-center justify-center border border-slate-800">
+                            <span class="text-4xl">⚔️🎬</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base">تصميم المعارك والديكور الحركي (Fight Choreography)</h3>
+                        <p class="text-xs text-slate-400">تصميم مشاهد القتال التعبيري الموجهة للسينما والإنتاج السمعي البصري الرقمي.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Artist Dossier Tab -->
+        <div x-show="currentTab === 'dossier'" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="bg-emerald-950 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">الملف الفني الإداري</span>
+                    <h2 class="text-2xl font-bold text-white mt-2">Dossier Artistique - بطاقة الفنان</h2>
+                    <p class="text-xs text-slate-400 mt-1">موجه للجنة التقييم بالمجلس الوطني للفنون والآداب - وزارة الثقافة والفنون الجزائرية</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div class="space-y-3">
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">التخصص المطلوب:</span>
+                            <span class="font-bold text-emerald-400">مصمم كوريغرافي وفنون سمعية بصرية رقمية</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">الرتبة الرياضية/الفنية:</span>
+                            <span class="font-bold text-white">مدرب جودو - حزام أسود درجة أولى (1st Dan)</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">نوع العمل المقدم:</span>
+                            <span class="font-bold text-white">تطبيق تفاعلي + عروض استعراضية تراثية</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-xs leading-relaxed text-slate-300">
+                        <p class="font-bold text-emerald-400 mb-2">ملخص المشروع الفني:</p>
+                        يتضمن المشروع إنشاء منصات سمعية بصرية وتفاعلية (Digital Art & Interactive Tours) لتوثيق التراث الجزائري المعماري، يدمج بين التصميم التفاعلي للوسائط المتعددة والعروض الاستعراضية الحركة (Martial Arts Performance & Choreography).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Initialize 360 Viewer with Pannellum
+        window.addEventListener('load', function() {
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": "https://pannellum.org/images/alma.jpg",
+                "autoLoad": true,
+                "compass": true,
+                "title": "مقام الشهيد 360°"
+            });
+        });
+    </script>
+</body>
+</html>
